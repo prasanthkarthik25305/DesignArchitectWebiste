@@ -101,7 +101,6 @@ async function buildAll() {
       "puppeteer",
       "puppeteer-core",
       "electron",
-      "dotenv",
       "express",
       "cors",
       "cookie-parser",
