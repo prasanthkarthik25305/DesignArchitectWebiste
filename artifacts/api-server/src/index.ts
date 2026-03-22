@@ -1,6 +1,9 @@
 import app from "./app";
 import { logger } from "./lib/logger";
 import 'dotenv/config';
+
+// Export for Vercel serverless
+export default app;
 const rawPort = process.env["PORT"];
 
 if (!rawPort) {
