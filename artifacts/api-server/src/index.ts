@@ -8,8 +8,9 @@ dotenv.config();
 // Export for Vercel serverless
 export default app;
 
-// Only start server if not in Vercel environment
-if (process.env.NODE_ENV !== "production") {
+// Start server for normal Node runtimes (Render/local). Vercel provides its own
+// serverless runtime and sets VERCEL=1.
+if (!process.env.VERCEL) {
   const rawPort = process.env["PORT"];
 
   if (!rawPort) {
