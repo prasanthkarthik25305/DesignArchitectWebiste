@@ -111,7 +111,6 @@ async function buildAll() {
       "drizzle-orm/pg-core",
       "drizzle-zod",
       "pg",
-      "zod",
     ],
     sourcemap: "linked",
     plugins: [
