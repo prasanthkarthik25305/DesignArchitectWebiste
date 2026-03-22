@@ -106,6 +106,12 @@ async function buildAll() {
       "cookie-parser",
       "pino",
       "pino-http",
+      "drizzle-orm",
+      "drizzle-orm/node-postgres",
+      "drizzle-orm/pg-core",
+      "drizzle-zod",
+      "pg",
+      "zod",
     ],
     sourcemap: "linked",
     plugins: [
