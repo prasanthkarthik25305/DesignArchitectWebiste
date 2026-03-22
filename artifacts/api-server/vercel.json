@@ -6,11 +6,8 @@
       "use": "@vercel/node"
     }
   ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "dist/index.js"
-    }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.js" }
   ],
   "env": {
     "NODE_ENV": "production"
