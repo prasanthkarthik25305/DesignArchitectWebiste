@@ -21,7 +21,7 @@ async function buildAll() {
     format: "cjs",
     outdir: distDir,
     outExtension: { ".js": ".js" },
-    mainFields: ["main", "module"],
+    mainFields: ["main"],
     logLevel: "info",
     // Some packages may not be bundleable, so we externalize them, we can add more here as needed.
     // Some of the packages below may not be imported or installed, but we're adding them in case they are in the future.
@@ -108,15 +108,13 @@ async function buildAll() {
       // pino relies on workers to handle logging, instead of externalizing it we use a plugin to handle it
       esbuildPluginPino({ transports: ["pino-pretty"] })
     ],
-    // Make sure packages that are cjs only (e.g. express) but are bundled continue to work in our esm output file
+    // CommonJS banner for compatibility
     banner: {
-      js: `import { createRequire as __bannerCrReq } from 'node:module';
-import __bannerPath from 'node:path';
-import __bannerUrl from 'node:url';
+      js: `const path = require('path');
+const url = require('url');
 
-globalThis.require = __bannerCrReq(import.meta.url);
-globalThis.__filename = __bannerUrl.fileURLToPath(import.meta.url);
-globalThis.__dirname = __bannerPath.dirname(globalThis.__filename);
+globalThis.__filename = __filename;
+globalThis.__dirname = path.dirname(__filename);
     `,
     },
   });
