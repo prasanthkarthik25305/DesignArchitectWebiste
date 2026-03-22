@@ -102,21 +102,17 @@ async function buildAll() {
       "puppeteer-core",
       "electron",
       "dotenv",
+      "express",
+      "cors",
+      "cookie-parser",
+      "pino",
+      "pino-http",
     ],
     sourcemap: "linked",
     plugins: [
       // pino relies on workers to handle logging, instead of externalizing it we use a plugin to handle it
       esbuildPluginPino({ transports: ["pino-pretty"] })
     ],
-    // CommonJS banner for compatibility
-    banner: {
-      js: `const path = require('path');
-const url = require('url');
-
-globalThis.__filename = __filename;
-globalThis.__dirname = path.dirname(__filename);
-    `,
-    },
   });
 }
 
