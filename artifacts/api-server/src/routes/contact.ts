@@ -5,7 +5,7 @@ import { SubmitContactBody, SubmitContactResponse } from "@workspace/api-zod";
 
 const router: IRouter = Router();
 
-router.post("/contact", async (req, res) => {
+router.post("/", async (req, res) => {
   const parsed = SubmitContactBody.safeParse(req.body);
   if (!parsed.success) {
     res.status(422).json({ error: "Validation failed", details: parsed.error.message });
